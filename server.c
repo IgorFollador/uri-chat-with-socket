@@ -55,6 +55,9 @@ void *clientHandler(void *arg) {
         char messageWithPrefix[2048]; // Aumentar o tamanho do buffer
         snprintf(messageWithPrefix, sizeof(messageWithPrefix), "Cliente %d: %s", clientNumber, message);
         
+        // Imprime a mensagem no terminal do servidor
+        printf("%s\n", messageWithPrefix);
+        
         // Envia a mensagem com o prefixo para todos os outros clientes
         pthread_mutex_lock(&mutex);
         for (int i = 0; i < clientCount; i++) {
